@@ -53,7 +53,7 @@ function addFiveMinutes() {
 }
 
 function removeFiveMinutes() {
-  if (Number(minutesDisplay.textContent) >= 5) {
+  if (Number(minutesDisplay.textContent) >= 10) {
     updateTimerDisplay(Number(minutesDisplay.textContent) - 5, 0)
   }
 
