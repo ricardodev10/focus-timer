@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --fc-timer: hsla(240, 6%, 21%, 1);
+    --fc-card-2: #FFFFFF;
+    --bg-card-1: hsla(240, 9%, 89%, 1);
+    --bg-card-2: hsla(194, 97%, 31%, 1);
+}
+
+.hide {
+    display: none;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    display: grid;
+    grid-template-areas: "A B";
+
+    gap: 19.2rem
+}
+
+#timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 32rem;
+}
+
+#time {
+    font-size: 12.6rem;
+    line-height: 14.8rem;
+    color: var(--fc-timer);
+
+    display: flex;
+    margin-bottom: 4.8rem;
+}
+
+#controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+#controls button {
+    background: transparent;
+}
+
+#controls button:hover {
+    transform: scale(1.1);
+    transition: transform 200ms;
+}
+
+#sounds {
+    width: 30.8rem;
+
+    display: grid;
+    grid-template-areas: 
+    "A B"
+    'C D';
+    gap: 3.2rem;
+}
+
+#sounds button {
+    width: 13.8rem;
+    height: 15.2rem;
+
+    background: var(--bg-card-1);
+    border-radius: 2.4rem;
+}
+
+#sounds button:hover {
+    transition: all 300ms;
+    transform: scale(1.1);
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+@media (max-width: 680px) {
+    body {
+        height: auto;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 7rem;
+    }
+}
