@@ -13,7 +13,7 @@
     --bg-card-2: hsla(194, 97%, 31%, 1);
 }
 
-.theme-light {
+/* .theme-light {
   --number-color: #323239;
   --svg-path-color: #323238;
   --svg-path-active-color: #ffffff;
@@ -37,7 +37,7 @@
   --cs-secondary: #2f2f35;
   --cs-primary-active: #0c3c4c;
   --cs-secondary-active: #092c38;
-}
+} */
 
 .hide {
     display: none;
@@ -122,7 +122,7 @@ main {
     width: 13.8rem;
     height: 15.2rem;
 
-    /* background: var(--bg-card-1); */
+    background: var(--bg-card-1);
     border-radius: 2.4rem;
 }
 
