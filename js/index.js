@@ -128,7 +128,7 @@ function playAudioForest() {
 
   audioForest.onpause = () => {
     isPlaying = false
-    buttonForest.style.background = "var(--bg-card-1)"
+    buttonForest.style.background = ""
   };
 }
 
@@ -144,7 +144,7 @@ function playAudioRain() {
 
   audioRain.onpause = () => {
     isPlaying = false
-    buttonRain.style.background = "var(--bg-card-1)"
+    buttonRain.style.background = ""
   };
 }
 
@@ -160,7 +160,7 @@ function playAudioCoffeeShop() {
 
   audioCoffeeShop.onpause = () => {
     isPlaying = false
-    buttonCoffeeShop.style.background = "var(--bg-card-1)"
+    buttonCoffeeShop.style.background = ""
   };
 }
 
@@ -176,7 +176,7 @@ function playAudioFireplace() {
 
   audioFireplace.onpause = () => {
     isPlaying = false
-    buttonFireplace.style.background = "var(--bg-card-1)"
+    buttonFireplace.style.background = ""
   };
 }
 
@@ -188,13 +188,27 @@ buttonFireplace.addEventListener('click', playAudioFireplace)
 
 
 // theme =================================================
+const body = document.querySelector("body")
 const buttonLightTheme = document.querySelector('.light-theme')
 const buttonDarkTheme = document.querySelector('.dark-theme')
 
+// theme functions =======================================
 function toggleTheme() {
-    buttonLightTheme.classList.toggle('hide')
     buttonDarkTheme.classList.toggle('hide')
+    buttonLightTheme.classList.toggle('hide')
 }
 
-buttonLightTheme.addEventListener('click', toggleTheme)
-buttonDarkTheme.addEventListener('click', toggleTheme)
+function toggleBodyClass() {
+  body.classList.toggle("light")
+}
+
+// theme events ==========================================
+buttonLightTheme.addEventListener('click', () => {
+  toggleTheme()
+  toggleBodyClass()
+})
+
+buttonDarkTheme.addEventListener('click', () => {
+  toggleTheme()
+  toggleBodyClass()
+})
