@@ -4,11 +4,6 @@
 This is a pomodoro style counter, with the option to select the minutes from 5 to 5, pause, stop and turn on and off forest, rain, coffee shop and fireplace sounds.
 
 
-## 📸 Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
 ## <p align="center"> 💁🏻‍♂️ Demonstration </p>
 
 <p align="center">
