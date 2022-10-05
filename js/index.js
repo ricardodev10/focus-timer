@@ -187,6 +187,41 @@ buttonCoffeeShop.addEventListener('click', playAudioCoffeeShop)
 buttonFireplace.addEventListener('click', playAudioFireplace)
 
 
+// volume ================================================
+const inputRangeForest = document.querySelector('#sounds .forest input')
+const inputRangeStorm = document.querySelector('#sounds .rain input')
+const inputRangeCoffee = document.querySelector('#sounds .coffee-shop input')
+const inputRangeFire = document.querySelector('#sounds .fireplace input')
+
+// volume functions ======================================
+function forestVolume(volume) {
+  audioForest.volume = volume / 100
+}
+function rainVolume(volume) {
+  audioRain.volume = volume / 100
+}
+function coffeeShopVolume(volume) {
+  audioCoffeeShop.volume = volume / 100
+}
+function fireplaceVolume(volume) {
+  audioFireplace.volume = volume / 100
+}
+
+// volume events =========================================
+inputRangeForest.addEventListener('input', () => {
+  forestVolume(inputRangeForest.value)
+})
+inputRangeStorm.addEventListener('input', () => {
+  rainVolume(inputRangeStorm.value)
+})
+inputRangeCoffee.addEventListener('input', () => {
+  coffeeShopVolume(inputRangeCoffee.value)
+})
+inputRangeFire.addEventListener('input', () => {
+  fireplaceVolume(inputRangeFire.value)
+})
+
+
 // theme =================================================
 const body = document.querySelector("body")
 const buttonLightTheme = document.querySelector('.light-theme')
