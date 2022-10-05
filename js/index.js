@@ -197,12 +197,15 @@ const inputRangeFire = document.querySelector('#sounds .fireplace input')
 function forestVolume(volume) {
   audioForest.volume = volume / 100
 }
+
 function rainVolume(volume) {
   audioRain.volume = volume / 100
 }
+
 function coffeeShopVolume(volume) {
   audioCoffeeShop.volume = volume / 100
 }
+
 function fireplaceVolume(volume) {
   audioFireplace.volume = volume / 100
 }
@@ -211,12 +214,15 @@ function fireplaceVolume(volume) {
 inputRangeForest.addEventListener('input', () => {
   forestVolume(inputRangeForest.value)
 })
+
 inputRangeStorm.addEventListener('input', () => {
   rainVolume(inputRangeStorm.value)
 })
+
 inputRangeCoffee.addEventListener('input', () => {
   coffeeShopVolume(inputRangeCoffee.value)
 })
+
 inputRangeFire.addEventListener('input', () => {
   fireplaceVolume(inputRangeFire.value)
 })
