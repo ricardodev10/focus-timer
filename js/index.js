@@ -1,3 +1,6 @@
+// // EcmaScript - ES6 Modules
+import { Controls } from './controls.js'
+
 // controls ==============================================
 const buttonPlay = document.querySelector(".play")
 const buttonPause = document.querySelector(".pause")
@@ -9,6 +12,11 @@ let timerTimeout;
 const minutesDisplay = document.querySelector(".minutes")
 const secondsDisplay = document.querySelector(".seconds")
 let minutes = Number(minutesDisplay.textContent)
+
+const controls = Controls({
+  buttonPlay,
+  buttonPause
+})
 
 // controls functions ====================================
 function countdown() {
@@ -32,11 +40,6 @@ function countdown() {
 
     countdown()
   }, 1000)
-}
-
-function toggleButton() {
-  buttonPlay.classList.toggle('hide')
-  buttonPause.classList.toggle('hide')
 }
 
 function addFiveMinutes() {
@@ -70,13 +73,13 @@ buttonMore.addEventListener('click', addFiveMinutes)
 buttonLess.addEventListener('click', removeFiveMinutes)
 
 buttonPlay.addEventListener('click', () => {
-  toggleButton()
+  controls.toggleButton()
   countdown()
   pressButton()
 })
 
 buttonPause.addEventListener('click', () => {
-  toggleButton()
+  controls.toggleButton()
   clearTimeout(timerTimeout)
   pressButton()
 })
