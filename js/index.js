@@ -1,5 +1,7 @@
 // // EcmaScript - ES6 Modules
 import { Controls } from './controls.js'
+import { Sound } from './sounds.js'
+import { Theme } from './theme.js'
 
 // controls ==============================================
 const buttonPlay = document.querySelector(".play")
@@ -15,7 +17,9 @@ let minutes = Number(minutesDisplay.textContent)
 
 const controls = Controls({
   buttonPlay,
-  buttonPause
+  buttonPause,
+  minutesDisplay,
+  secondsDisplay,
 })
 
 // controls functions ====================================
@@ -24,7 +28,7 @@ function countdown() {
     let seconds = Number(secondsDisplay.textContent)
     let minutes = Number(minutesDisplay.textContent)
 
-    updateTimerDisplay(minutes, 0)
+    controls.updateTimerDisplay(minutes, 0)
 
     if (minutes <= 0) {
       timeEnd()
@@ -36,59 +40,45 @@ function countdown() {
       --minutes
     }
 
-    updateTimerDisplay(minutes, String(seconds - 1))
+    controls.updateTimerDisplay(minutes, String(seconds - 1))
 
     countdown()
   }, 1000)
 }
 
-function addFiveMinutes() {
-  if (Number(minutesDisplay.textContent) <= 55) {
-    updateTimerDisplay(Number(minutesDisplay.textContent) + 5, 0)
-  }
-
-  pressButton()
-}
-
-function removeFiveMinutes() {
-  if (Number(minutesDisplay.textContent) >= 10) {
-    updateTimerDisplay(Number(minutesDisplay.textContent) - 5, 0)
-  }
-
-  pressButton()
-}
-
-function updateTimerDisplay(minutes, seconds) {
-  minutesDisplay.textContent = String(minutes).padStart(2, "0")
-  secondsDisplay.textContent = String(seconds).padStart(2, "0")
-}
-
 function resetTimer() {
-  updateTimerDisplay(minutes, 0)
+  controls.updateTimerDisplay(minutes, 0)
   clearTimeout(timerTimeout)
 }
 
 // controls events =======================================
-buttonMore.addEventListener('click', addFiveMinutes)
-buttonLess.addEventListener('click', removeFiveMinutes)
+buttonMore.addEventListener('click', () => {
+  controls.addFiveMinutes()
+  sound.pressButton()
+})
+
+buttonLess.addEventListener('click', () => {
+  controls.removeFiveMinutes()
+  sound.pressButton()
+})
 
 buttonPlay.addEventListener('click', () => {
   controls.toggleButton()
   countdown()
-  pressButton()
+  sound.pressButton()
 })
 
 buttonPause.addEventListener('click', () => {
   controls.toggleButton()
   clearTimeout(timerTimeout)
-  pressButton()
+  sound.pressButton()
 })
 
 buttonStop.addEventListener('click', () => {
   buttonPlay.classList.remove('hide')
   buttonPause.classList.add('hide')
   resetTimer()
-  pressButton()
+  sound.pressButton()
 })
 
 
@@ -106,13 +96,12 @@ const audioRain = new Audio("./sounds/Chuva.mp3")
 const audioCoffeeShop = new Audio("./sounds/Cafeteria.mp3")
 const audioFireplace = new Audio("./sounds/Lareira.mp3")
 
+const sound = Sound({
+  buttonPressAudio
+})
+
 // sounds functions ======================================
 let isPlaying = false
-
-function pressButton() {
-  buttonPressAudio.volume = 0.02
-  buttonPressAudio.play()
-}
 
 function timeEnd() {
   kitchenTimerAudio.volume = 0.05
@@ -236,23 +225,19 @@ const body = document.querySelector("body")
 const buttonLightTheme = document.querySelector('.light-theme')
 const buttonDarkTheme = document.querySelector('.dark-theme')
 
-// theme functions =======================================
-function toggleTheme() {
-    buttonDarkTheme.classList.toggle('hide')
-    buttonLightTheme.classList.toggle('hide')
-}
-
-function toggleBodyClass() {
-  body.classList.toggle("light")
-}
+const theme = Theme({
+  buttonDarkTheme,
+  buttonLightTheme,
+  body
+})
 
 // theme events ==========================================
 buttonLightTheme.addEventListener('click', () => {
-  toggleTheme()
-  toggleBodyClass()
+  theme.toggleTheme()
+  theme.toggleBodyClass()
 })
 
 buttonDarkTheme.addEventListener('click', () => {
-  toggleTheme()
-  toggleBodyClass()
+  theme.toggleTheme()
+  theme.toggleBodyClass()
 })
