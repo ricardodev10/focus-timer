@@ -31,7 +31,7 @@ function countdown() {
     controls.updateTimerDisplay(minutes, 0)
 
     if (minutes <= 0) {
-      timeEnd()
+      sound.timeEnd()
       return
     }
 
@@ -97,16 +97,12 @@ const audioCoffeeShop = new Audio("./sounds/Cafeteria.mp3")
 const audioFireplace = new Audio("./sounds/Lareira.mp3")
 
 const sound = Sound({
-  buttonPressAudio
+  buttonPressAudio,
+  kitchenTimerAudio
 })
 
 // sounds functions ======================================
 let isPlaying = false
-
-function timeEnd() {
-  kitchenTimerAudio.volume = 0.05
-  kitchenTimerAudio.play()
-}
 
 function playAudioForest() {
   audioForest.loop = true
