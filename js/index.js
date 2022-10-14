@@ -1,15 +1,13 @@
-// // EcmaScript - ES6 Modules
 import { Controls } from './controls.js'
 import { Sound } from './sounds.js'
 import { Theme } from './theme.js'
+import { Timer } from './timer.js'
 
-// controls ==============================================
 const buttonPlay = document.querySelector(".play")
 const buttonPause = document.querySelector(".pause")
 const buttonStop = document.querySelector(".stop")
 const buttonMore = document.querySelector(".more")
 const buttonLess = document.querySelector(".less")
-let timerTimeout;
 
 const minutesDisplay = document.querySelector(".minutes")
 const secondsDisplay = document.querySelector(".seconds")
@@ -17,70 +15,43 @@ let minutes = Number(minutesDisplay.textContent)
 
 const controls = Controls({
   buttonPlay,
-  buttonPause,
+  buttonPause
+})
+
+const timer = Timer({
   minutesDisplay,
   secondsDisplay,
-})
-
-// controls functions ====================================
-function countdown() {
-  timerTimeout = setTimeout(() => {
-    let seconds = Number(secondsDisplay.textContent)
-    let minutes = Number(minutesDisplay.textContent)
-
-    controls.updateTimerDisplay(minutes, 0)
-
-    if (minutes <= 0) {
-      sound.timeEnd()
-      return
-    }
-
-    if (seconds <= 0) {
-      seconds = 60
-      --minutes
-    }
-
-    controls.updateTimerDisplay(minutes, String(seconds - 1))
-
-    countdown()
-  }, 1000)
-}
-
-function resetTimer() {
-  controls.updateTimerDisplay(minutes, 0)
-  clearTimeout(timerTimeout)
-}
-
-// controls events =======================================
-buttonMore.addEventListener('click', () => {
-  controls.addFiveMinutes()
-  sound.pressButton()
-})
-
-buttonLess.addEventListener('click', () => {
-  controls.removeFiveMinutes()
-  sound.pressButton()
+  minutes
 })
 
 buttonPlay.addEventListener('click', () => {
   controls.toggleButton()
-  countdown()
+  timer.countdown()
   sound.pressButton()
 })
 
 buttonPause.addEventListener('click', () => {
   controls.toggleButton()
-  clearTimeout(timerTimeout)
+  timer.hold()
   sound.pressButton()
 })
 
 buttonStop.addEventListener('click', () => {
   buttonPlay.classList.remove('hide')
   buttonPause.classList.add('hide')
-  resetTimer()
+  timer.reset()
   sound.pressButton()
 })
 
+buttonMore.addEventListener('click', () => {
+  timer.addFiveMinutes()
+  sound.pressButton()
+})
+
+buttonLess.addEventListener('click', () => {
+  timer.removeFiveMinutes()
+  sound.pressButton()
+})
 
 // sounds ================================================
 const buttonForest = document.querySelector(".button-forest")
@@ -227,7 +198,6 @@ const theme = Theme({
   body
 })
 
-// theme events ==========================================
 buttonLightTheme.addEventListener('click', () => {
   theme.toggleTheme()
   theme.toggleBodyClass()
