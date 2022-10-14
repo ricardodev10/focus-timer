@@ -1,7 +1,7 @@
 
 # <p align="center"> Focus Timer | Pomodoro </p>
 
-This is a pomodoro style counter, with the option to select the minutes from 5 to 5, pause, stop and turn on and off forest, rain, coffee shop and fireplace sounds.
+This is a pomodoro style counter in dark mode, with the option to select the minutes from 5 to 5, pause, stop, turn on/off forest sounds, rain, coffee shop, fireplace, and volume change.
 
 
 ## <p align="center"> 💁🏻‍♂️ Demonstration </p>
