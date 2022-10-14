@@ -3,14 +3,16 @@ import { Sound } from './sounds.js'
 import { Theme } from './theme.js'
 import { Timer } from './timer.js'
 
-const buttonPlay = document.querySelector(".play")
-const buttonPause = document.querySelector(".pause")
-const buttonStop = document.querySelector(".stop")
-const buttonMore = document.querySelector(".more")
-const buttonLess = document.querySelector(".less")
+import {
+  buttonPlay,
+  buttonPause,
+  buttonStop,
+  buttonMore,
+  buttonLess,
+  minutesDisplay,
+  secondsDisplay
+} from './elements.js'
 
-const minutesDisplay = document.querySelector(".minutes")
-const secondsDisplay = document.querySelector(".seconds")
 let minutes = Number(minutesDisplay.textContent)
 
 const controls = Controls({
