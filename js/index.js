@@ -10,7 +10,18 @@ import {
   buttonMore,
   buttonLess,
   minutesDisplay,
-  secondsDisplay
+  secondsDisplay,
+  buttonForest,
+  buttonRain,
+  buttonCoffeeShop,
+  buttonFireplace,
+  inputRangeForest,
+  inputRangeStorm,
+  inputRangeCoffee,
+  inputRangeFire,
+  body,
+  buttonLightTheme,
+  buttonDarkTheme
 } from './elements.js'
 
 let minutes = Number(minutesDisplay.textContent)
@@ -56,11 +67,6 @@ buttonLess.addEventListener('click', () => {
 })
 
 // sounds ================================================
-const buttonForest = document.querySelector(".button-forest")
-const buttonRain = document.querySelector(".button-rain")
-const buttonCoffeeShop = document.querySelector(".button-coffee-shop")
-const buttonFireplace = document.querySelector(".button-fireplace")
-
 const buttonPressAudio = new Audio("./sounds/Button-press.wav")
 const kitchenTimerAudio = new Audio("./sounds/Kitchen-timer.mp3")
 
@@ -74,7 +80,6 @@ const sound = Sound({
   kitchenTimerAudio
 })
 
-// sounds functions ======================================
 let isPlaying = false
 
 function playAudioForest() {
@@ -141,7 +146,6 @@ function playAudioFireplace() {
   };
 }
 
-// sounds events =========================================
 buttonForest.addEventListener('click', playAudioForest)
 buttonRain.addEventListener('click', playAudioRain)
 buttonCoffeeShop.addEventListener('click', playAudioCoffeeShop)
@@ -149,12 +153,6 @@ buttonFireplace.addEventListener('click', playAudioFireplace)
 
 
 // volume ================================================
-const inputRangeForest = document.querySelector('#sounds .forest input')
-const inputRangeStorm = document.querySelector('#sounds .rain input')
-const inputRangeCoffee = document.querySelector('#sounds .coffee-shop input')
-const inputRangeFire = document.querySelector('#sounds .fireplace input')
-
-// volume functions ======================================
 function forestVolume(volume) {
   audioForest.volume = volume / 100
 }
@@ -171,7 +169,6 @@ function fireplaceVolume(volume) {
   audioFireplace.volume = volume / 100
 }
 
-// volume events =========================================
 inputRangeForest.addEventListener('input', () => {
   forestVolume(inputRangeForest.value)
 })
@@ -188,12 +185,7 @@ inputRangeFire.addEventListener('input', () => {
   fireplaceVolume(inputRangeFire.value)
 })
 
-
 // theme =================================================
-const body = document.querySelector("body")
-const buttonLightTheme = document.querySelector('.light-theme')
-const buttonDarkTheme = document.querySelector('.dark-theme')
-
 const theme = Theme({
   buttonDarkTheme,
   buttonLightTheme,
