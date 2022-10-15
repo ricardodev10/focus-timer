@@ -181,3 +181,9 @@ main {
         right: 1rem;
     }
 }
+
+@media (max-width: 900px) {
+    main {
+        gap: 5rem
+    }
+}
